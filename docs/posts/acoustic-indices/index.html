@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gio Jacuzzi">
+<meta name="dcterms.date" content="2023-03-02">
+
+<title>quarto-blog-demo - What are acoustic indices?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">quarto-blog-demo</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">What are acoustic indices?</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Gio Jacuzzi </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 2, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Assessing biodiversity with sound.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pnw-dawnchorus.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Different songbird vocalizations during the dawn chorus in the Olympic Experimental State Forest, Washington.</figcaption><p></p>
+</figure>
+</div>
+<section id="if-a-tree-falls-in-the-forest" class="level2">
+<h2 class="anchored" data-anchor-id="if-a-tree-falls-in-the-forest">If a tree falls in the forest…</h2>
+<p>…and no one is around to hear it, does it make a sound? Yes, and if you had acoustic monitors deployed at the time, you could hear it! Soundscape ecology, the study of environmental sound, is a burgeoning field of research. By listening closely to the vocalizations and activity of wildlife, we can gain a unique perspective on the community composition and biodiversity of a place. We do this with passive acoustic monitoring, or in other words, by going out into the field to install a bunch of microphones and record days, months, or even years of audio data. And with increasingly cost-effective microphones and data storage becoming ubiquitous, there has never been a better time to get out there and record.</p>
+<p>But, speaking of data storage, a full week of constant 24 hour recording can yield more than 50 GB of data (at 44.1 kHz). Considering that may be one site of many, those numbers will scale up fast. With more TB of data and hours of recordings than any human could possibly listen to in their lifetime, how can we efficiently reveal the secrets of our recordings, and understand the biodiversity of our study area?</p>
+</section>
+<section id="acoustic-indices" class="level1">
+<h1>Acoustic indices</h1>
+<p>One promising area of research is automated species-specific vocalization identification, often using machine learning-based classifiers. But these systems, while very powerful, are time and resource intensive to set up, as they are designed to examine each vocalization individually. This blog post explores another, more accessible option, that takes a step back and looks at what is happening to the soundscape as a whole. Enter: acoustic indices.</p>
+<blockquote class="blockquote">
+<p>“An acoustic index is a statistic that summarizes some aspect of the structure and distribution of acoustic energy and information in an audio recording.” (Sueur 2018)</p>
+</blockquote>
+<p>It attempts to put a number on the complexity of sound present in a recording. The idea behind this is that higher species richness in a given community will produce a greater range of acoustic signals, and thus exhibit a greater range of acoustic diversity. And if we can describe that diversity, we are describing a metric that is highly correlated with biodiversity.</p>
+<p>Calculating an acoustic index reduces a recording into a set of numbers, which can then be used to make comparisons over time and between places. Because these numbers characterize the soundscape as a whole, they can provide a perspective on ecological integrity and change.</p>
+<section id="what-are-acoustic-indices-for" class="level4">
+<h4 class="anchored" data-anchor-id="what-are-acoustic-indices-for">What are acoustic indices for?</h4>
+<ul>
+<li><p>Rapid, landscape-scale biodiversity assessment</p></li>
+<li><p>Characterizing ecological integrity or wildness</p></li>
+<li><p>Monitoring long-term change (disturbance, rewilding, biodiversity trajectories, etc)</p></li>
+</ul>
+<p>But why use acoustic indices in particular, as opposed to other monitoring methods? Firstly, there is no need for individual species identification. This saves loads of time and effort. It also means this technique is applicable to taxa that we don’t know the sound of, or can’t identify very well. Second, we can characterize sound that includes geophony (wind, rain) and anthrophony (human noise), as well as biophony (wildlife vocalizations and activity).</p>
+</section>
+<section id="assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
+<p>There are some assumptions we need to consider when using acoustic indices to investigate a location. Fundamentally, most acoustic indices rely on the reasoning that as you have more species in a given area, they will produce a greater range of sound signals, resulting in a greater acoustic diversity. There are a few other particular assumptions at play:</p>
+<section id="acoustic-complexity-relates-to-biological-complexity" class="level4">
+<h4 class="anchored" data-anchor-id="acoustic-complexity-relates-to-biological-complexity">1. Acoustic complexity relates to biological complexity</h4>
+<p>Acoustic complexity relates to biological complexity (richness, diversity, abundance). For example, is the complexity of birdsong a good proxy for bird species richness in your study area? What if you happen to have a community that have particularly diverse songs? How do you compare that with more monotonic communities? How do you cope with abiotic sounds (wind, rain, human noise)? Note that the terrain of habitats themselves can constrain the range of sound that animals make. For example, coastal birds live in open spaces where high-pitched sound carries well. Primary forests exhibit different soundscapes, where lower-pitched or complex songs may carry better.</p>
+</section>
+<section id="acoustic-space-is-a-resource-that-organisms-compete-for" class="level4">
+<h4 class="anchored" data-anchor-id="acoustic-space-is-a-resource-that-organisms-compete-for">2. Acoustic space is a resource that organisms compete for</h4>
+<p>Acoustic space is a resource that organisms compete for, similar to food, water, or shelter. This is also known as the “acoustic niche hypothesis”, and suggests that acoustic interference leads to resource partitioning (calling at different pitches and times), and even direct competition (one species can mask another one, invasive species may come in and take over an existing niche and reduce calls of another species). <em>(Krause 1993)</em></p>
+</section>
+<section id="your-recordings-reflect-a-significant-portion-of-the-local-biodiversity" class="level4">
+<h4 class="anchored" data-anchor-id="your-recordings-reflect-a-significant-portion-of-the-local-biodiversity">3. Your recordings reflect a significant portion of the local biodiversity</h4>
+<p>The acoustic community you recorded reflects a significant portion of the local biodiversity of interest. Have you left your recorders out for long enough to actually be able to characterize the soundscape comprehensively? Are you missing something important because you didn’t record at the right times or day, or for a long enough number of days? How much data do you need to see consistent results that capture the majority of the soundscape? These numbers can change depending on the place. These factors need to be considered when designing a deployment schedule for recorders. What about soundscapes where there may be important elements of biodiversity that don’t even make sounds? Is it always reasonable to use a sound-based approach? That’s a decision you need to make when considering using acoustic indices.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="bradfer-lawrence.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Increasing lengths of recording reduces variance of standard errors for acoustic indices. (Bradfer-Lawrence et al 2019)</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="how-do-acoustic-indices-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-acoustic-indices-work">How do acoustic indices work?</h2>
+<p>Different acoustic indices combine different elements of sound and different statistical methods to measure complexity. They typically use:</p>
+<ul>
+<li><p>Sound intensity (in dB)</p></li>
+<li><p>Presence/absence of sound in a frequency band</p></li>
+<li><p>Power spectrum</p></li>
+</ul>
+<p>With these measures, the indices then apply established statitstical methods, such as the Shannon biodiversity index or the Gini inequality index. More than 60 different indices have been devised so far, but lets look at some of the most commonly used ones.</p>
+<section id="bioacoustic-index" class="level4">
+<h4 class="anchored" data-anchor-id="bioacoustic-index">Bioacoustic index</h4>
+<p>Developed by Boelman and team to estimate relative bird abundance in Hawaii. They wanted to look at how non-native plant species invasion affected birds, so they developed this acoustic index and validated it against traditional ornithological surveys that directly measured birds, species, composition, and abundance.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="boelman-1.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Bioacoustic spectra of avian vocalizations from digital audio recordings, showing sound level intensity from 2000–8000 Hz. Recordings were acquired (a) directly after the dawn chorus (7–9 am local time), and (b) at mid-day (12–2 pm). Bioacoustic indices of avian abundance (Figs. 1, 2c, 3a) were calculated from the morning spectra shown in (a) at the time of day during which birds are most vocal. Forest sites are indicated in blue, woodland sites are indicated in green, savanna sites are shown in red and shrubland sites are indicated by cyan. (Boelman et al 2007)</figcaption><p></p>
+</figure>
+</div>
+<p>The bioacoustic index measures the area under the log amplitude spectrum curve in dB by kHz with the maximum dB level set to zero. The blue line is for dawn recordings at a forest site. They chose a range in this example from 2-8kHz because that’s the range of the birds that are singing. The area under the curve is the bioacoustic index. At other sites (different colors), the area under the curve is different. A is for the dawn chorus, and B is midday. Forest sites are blue, woodland green, savannah in red. They found that the bioacoustic index did correlate well with bird abundance overall.</p>
+</section>
+<section id="normalized-difference-soundscape-index" class="level4">
+<h4 class="anchored" data-anchor-id="normalized-difference-soundscape-index">Normalized Difference Soundscape Index</h4>
+<p>NDSI quantifies disturbance based on the ratio of biotic to anthropogenic sound in recordings. It also uses the area under the curve, but divides the power spectrum into two parts (anthrophony, typically 1-2kHz vs biophony, often 2-8kHz). Kasten and team had a big library of acoustic data and used it to develop the NDSI for efficient analysis.</p>
+<p><span class="math inline">\(NDSI = (biophony - anthrophony) / (biophony + anthrophony)\)</span></p>
+<p>Values tending to -1 indicate more anthrophony, while values tending to +1 indicate more biophony. It’s important to understand that there are limitations due to the strict reliance on frequency bin division, but these can be tuned to improve results based on your study site <em>(Gage &amp; Axel 2014)</em>.</p>
+</section>
+<section id="acoustic-diversity-and-acoustic-evenness" class="level4">
+<h4 class="anchored" data-anchor-id="acoustic-diversity-and-acoustic-evenness">Acoustic Diversity and Acoustic Evenness</h4>
+<p>These two related indices look at occupancy of frequency bins and then apply either the Shannon index for diversity or Gini index for evenness <em>(Pjanowski et al 2011, Villanueva-River et al 2011)</em>. They tend to yield inverse results of each other. Both start by dividing the frequency range into different bands, then determine ‘occupancy’ by looking for sounds that are loud enough to pass some threshold. The resulting proportion of active or “occupied” sound in those bands indicate levels of activity.</p>
+<p>The ADI uses the Shannon to output from zero to the natural log of the number of kHz bins. Larger values indicate more even activity among frequency bins (either noisy across all frequency bands or completely silent), while values closer to zero indicate increasingly narrow or purse tones (i.e.&nbsp;all energy in one frequency band).</p>
+</section>
+<section id="acoustic-complexity-index" class="level4">
+<h4 class="anchored" data-anchor-id="acoustic-complexity-index">Acoustic Complexity Index</h4>
+<p>ACI works in a similar way, but is a bit more complicated (it lives up to its name). This is one of the most widely used indices for measuring biodiversity. It arose from an observation by Pieretti and team that many biotic sounds, like birdsong, are characterized by an intrinsic variability of intensities, while many types of anthropogenic noise (like cars or airplanes passing) exhibit consistent intensity values. It was originally designed to measure the typical complexity of bird songs in a soundscape, despite the presence of persistent human-generated noise. It quantifies irregularity in sound, and assumes that this is correlated with bird song activity.</p>
+<p>It is based on the difference in amplitude between one time sample and the next within a frequency band, relative to the total amplitude <em>(Bradfer-Lawrence et al 2019)</em>. A recording is divided into a grid, an “ACI matrix”, that is made up of time sample rows and frequency band columns. ACI compares the sound intensity in each little grid square with the next one. When using ACI, you need to consider what time period and frequency bands are biologically meaningful for your survey.</p>
+<p>ACI also requires you to specify a time step J, which is a length of time made up of a number of time samples. Number of time samples in each time step J = total number time samples / J. J thus has to do with the level of detail and amount of “smoothing” the ACI does - the more J steps there are, the larger the ACI value will be.</p>
+<p>As it’s designed to quantify the inherent irregularity in biophony, it is relatively impervious to persistent sounds of constant intensity. Note that those persistent sounds could be biophonic, and insect drones are particularly prone to this. Pieretti found a significant correlation between ACI values and the number of bird vocalizations. That relationship was weaker with other acoustic indices due to interference from the airplane noise.</p>
+</section>
+</section>
+<section id="putting-acoustic-indices-to-use" class="level2">
+<h2 class="anchored" data-anchor-id="putting-acoustic-indices-to-use">Putting acoustic indices to use</h2>
+<p>Several packages have been developed to streamline the calculation of acoustic indices. Perhaps the most widely used are the <code>Seewave</code> and <code>SoundEcology</code> packages for R. There are other options that don’t require coding, however: the <a href="https://support.rfcx.org/article/71-what-is-arbimon">Arbimon Rainforest Connection</a> website, and interactive computer applications like Wildlife Acoustics’ <a href="https://www.wildlifeacoustics.com/products/kaleidoscope-pro">Kaleidoscope</a></p>
+<section id="monitoring-soundscapes-over-time" class="level4">
+<h4 class="anchored" data-anchor-id="monitoring-soundscapes-over-time">Monitoring soundscapes over time</h4>
+<p>Acoustic indices give us a way to visualize soundscapes using massive databases of recordings to look at change over time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="phillips.png" class="img-fluid figure-img" alt="Histogram of 13 months of recording (Phillips et al 2018)"></p>
+<p></p><figcaption class="figure-caption">Histogram of 13 months of recording (Phillips et al 2018)</figcaption><p></p>
+</figure>
+</div>
+<p>This figure shows how the soundscape of a national park in Australia changes over the course of a year. Each color represents a proportion of sounds in a certain category - birds, insects, planes, rain, etc. Phillips and team made continuous recordings at a single site for 13 months (yielding ~3 TB of data). They then divided the recordings into 1 min files and calculated 12 acoustic indices for each file. The indices were then clustered to create characteristic acoustic classes which correspond to the color categories.</p>
+<p>This illustrates how acoustic indices are often not used on their own, but to inform clustering or multivariate analysis that can tell a more detailed story of what is going on over time. We can learn so much if we only take the time to stop and listen!</p>
+<section id="references" class="level5">
+<h5 class="anchored" data-anchor-id="references">References</h5>
+<ul>
+<li><p>Sueur, J. (2018). Sound Analysis and Synthesis with R. Springer eBook. https://doi.org/10.1007/978-3-319-77647-7</p></li>
+<li><p>Krause, Bernie. (1993). The Niche Hypothesis: A virtual symphony of animal sounds, the origins of musical expression and the health of habitats. Soundscape Newsletter (World Forum for Acoustic Ecology).</p></li>
+<li><p>Bradfer-Lawrence, T., Gardner, N., Bunnefeld, L., Bunnefeld, N., Willis, S.G. &amp; Dent, D.H. (2019) Guidelines for the use of acoustic indices in environmental research. Methods Ecol Evol, 10, 1796-1807. https ://doi.org/10.1111/2041- 210X.13254</p></li>
+<li><p>Boelman, N., Asner, G., Hart, P. &amp; Martin, R. (2007). Multi-trophic invasion resistance in Hawaii: Bioacoustics, field surveys, and airborne remote sensing. Ecological Applications, 17, 2137–2144. https ://doi. org/10.1890/07-0004.1</p></li>
+<li><p>Kasten, E., Gage, S., Fox, J. &amp; Joo, W. (2012). The remote environmental assessment laboratory’s acoustic library: An archive for studying soundscape ecology. Ecological Informatics, 12, 50–67. https ://doi.org/10.1016/j.ecoinf.2012.08.001</p></li>
+<li><p>Gage, S. &amp; Axel, A. (2014). Visualization of temporal change in soundscape power of a Michigan lake habitat over a 4-year period. Ecological Informatics 21 (2014) 100–109</p></li>
+<li><p>Pijanowski, B. C., Villanueva-Rivera, L. J., Dumyahn, S. L., Farina, A., Krause, B. L., Napoletano, B. M., &amp; Pieretti, N. (2011). Soundscape ecology: The science of sound in the landscape. BioScience, 61, 203–216. https ://doi.org/10.1525/bio.2011.61.3.6</p></li>
+<li><p>Villanueva-Rivera, L., Pijanowski, B., Doucette, J., &amp; Pekin, B. (2011). A primer of acoustic analysis for landscape ecologists. Landscape Ecology, 26, 1233–1246. https ://doi.org/10.1007/s10980-011-9636-9</p></li>
+<li><p>Phillips, YF., Towsey, M. and Roe, P. (2018) Revealing the ecological content of long duration audio-recordings of the environment through clustering and visualisation. PLoS ONE 13(3): e0193345. https://doi.org/10.1371/journal.pone.0193345</p></li>
+<li><p>Pieretti, N., Farina, A. &amp; Morri, D. (2011). A new methodology to infer the singing activity of an avian community: The Acoustic Complexity Index (ACI). Ecological Indicators, 11, 868– 873. https :// doi.org/10.1016/j.ecoli nd.2010.11.005</p></li>
+<li><p>Tattersall, F, Howden-Leach, P. Introduction to Acoustic Indices for Biodiversity Monitoring. Wildlife Acoustics webinar, February 2023.</p></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
